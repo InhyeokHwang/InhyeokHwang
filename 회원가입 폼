@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입</title>
+<style>
+legend{
+	color : brown;
+}
+
+#form{
+	text-align : center;
+	display : inline-block;
+}
+
+input[type=text]:hover, input[type=password]:hover, input[type=password]:hover{
+	border : 2px solid skyblue;
+	border-radius : 5px;
+}
+</style>
+</head>
+<body>
+	<!-- 폼 만들기 -->
+		<form id = "form" onsubmit="return formCheck()" action="NewJSP.jsp" name="register" method="post">
+			<fieldset>
+				<legend><strong>회원가입</strong></legend>
+				아이디 : <input type="text" name="id" size="10" placeholder="아이디"><br>
+				비밀번호 : <input type="password" name="pw" size="10" placeholder="비밀번호"><br>
+				비밀번호 확인 : <input type="password" name="pwCheck" size="10" placeholder="비밀번호 확인"><br>
+				이메일 : <input type="text" name="email" size="20" placeholder="이메일"><br>
+				성별 : <label><input type="radio" name="gender" value="남자">남자</label>
+				<label><input type="radio" name="gender" value="여자">여자<br></label>
+			
+				<input type="submit" onclick="formCheck()" value="회원가입">
+				<input type="reset" value="초기화">
+			</fieldset>
+		</form>
+		
+	<!-- 유효성검사 -->
+	<script>
+		function formCheck(){
+			var id = document.register.id.value;
+			var pw = document.register.pw.value;
+			var pwCheck = document.register.pwCheck.value;
+			var email = document.register.email.value;
+			var gender = document.register.gender.value;
+			
+			if(id == "" || id == null){
+				alert("아이디는 필수사항입니다.");
+				document.register.id.focus();
+				return false;
+			}
+			
+			if(pw == "" || pw == null){
+				alert("비밀번호는 필수사항입니다.");
+				document.register.pw.focus();
+				return false;
+			}
+			if(pwCheck != pw){
+				alert("입력한 비밀번호가 일치하지 않습니다.");
+				document.register.pwCheck.focus();
+				return false;
+			}
+			if(email == "" || email == null) {
+				alert("이메일은 필수사항입니다.");
+				document.register.email.focus();
+				return false;
+			}
+			if(gender == "" || gender == null) {
+				alert("성별을 선택해주세요.");
+				document.register.gender.focus();
+				return false;
+		}
+	}
+	</script>
+</body>
+</html>
